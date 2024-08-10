@@ -5,9 +5,8 @@ import com.Rest.Courses.Courses.service.courseService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class courseServiceImpl implements courseService {
@@ -47,6 +46,22 @@ public class courseServiceImpl implements courseService {
     @Override
     public Course addCourse(Course course){
         listCourse.add(course);
+        return course;
+    }
+
+    @Override
+    public void deleteCourse(long parseLong) {
+        listCourse = this.listCourse.stream().filter(e->e.getId()!=parseLong).collect(Collectors.toList());
+    }
+
+    @Override
+    public Course updateCourse(Course course) {
+        listCourse.forEach(e -> {
+            if (e.getId() == course.getId()) {
+                e.setTittle(course.getTittle());
+                e.setDescription(course.getDescription());
+            }
+        });
         return course;
     }
 }
