@@ -4,6 +4,7 @@ import com.Rest.Courses.Courses.Entities.Course;
 import com.Rest.Courses.Courses.service.courseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,5 +22,10 @@ public class myController {
     @GetMapping("/courses")
     public List<Course> getAllCourses(){
         return this.courseService.getAllCourses();
+    }
+
+    @GetMapping("/courses/{courseId}")
+    public Course getCourse(@PathVariable String courseId){
+        return this.courseService.getCourseById(Long.parseLong(courseId));
     }
 }

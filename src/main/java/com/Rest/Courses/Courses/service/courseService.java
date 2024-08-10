@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface courseService {
     List<Course>getAllCourses();
+    public Course getCourseById(long courseId);
 }
