@@ -24,4 +24,16 @@ public class courseServiceImpl implements courseService {
     public List<Course> getAllCourses(){
         return listCourse;
     }
+
+    @Override
+    public Course getCourseById(long courseId){
+        Course c=null;
+        for(Course course: listCourse){
+            if(course.getId()==courseId){
+                c=course;
+                break;
+            }
+        }
+        return c;
+    }
 }
