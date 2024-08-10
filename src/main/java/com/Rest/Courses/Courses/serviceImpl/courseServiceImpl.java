@@ -4,7 +4,9 @@ import com.Rest.Courses.Courses.Entities.Course;
 import com.Rest.Courses.Courses.service.courseService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -13,11 +15,16 @@ public class courseServiceImpl implements courseService {
     List<Course> listCourse;
 
     public courseServiceImpl(){
-        listCourse = Arrays.asList(
-                new Course(1,"English","Language"),
-                new Course(9,"History","Old Stories"),
-                new Course(2,"Mathematics","Ramanujamam")
-        );
+        listCourse = new ArrayList<>();
+        listCourse.add(new Course(1,"English","Language"));
+        listCourse.add(new Course(9,"History","Old Stories"));
+        listCourse.add(new Course(2,"Mathematics","Ramanujamam"));
+
+//        listCourse = Arrays.asList(
+//                new Course(1,"English","Language"),
+//                new Course(9,"History","Old Stories"),
+//                new Course(2,"Mathematics","Ramanujamam")
+//        );
     }
 
     @Override
@@ -35,5 +42,11 @@ public class courseServiceImpl implements courseService {
             }
         }
         return c;
+    }
+
+    @Override
+    public Course addCourse(Course course){
+        listCourse.add(course);
+        return course;
     }
 }
